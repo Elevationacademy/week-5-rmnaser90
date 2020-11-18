@@ -21,9 +21,6 @@ const item = store.find(i => i.name == name) || {price:null}
 res.send({price: item.price})
 })
 
-
-
-
 const port=3001
 app.listen(port,function () {
 console.log(`server is up and running at port: ${port}`);
