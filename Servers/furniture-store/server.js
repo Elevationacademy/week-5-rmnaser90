@@ -16,9 +16,16 @@ const store = [
 app.get('/priceCheck/:name', function (req,res) {
     
 const name = req.params.name
-const item = store.find(i => i.name == name) || {price:null}
+const item = store.find(i => i.name == name) || {}
 
 res.send({price: item.price})
+})
+
+app.get('/buy/:name',function (req,res) {
+    const name = req.params.name
+    const item = store.find(i => i.name == name) || {}
+    item.inventory--
+    res.send(item)
 })
 
 const port=3001
@@ -26,4 +33,3 @@ app.listen(port,function () {
 console.log(`server is up and running at port: ${port}`);
 
 })
-
